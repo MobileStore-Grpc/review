@@ -1,0 +1,25 @@
+syntax = "proto3";
+package pb;
+option go_package = "github.com/MobileStore-Grpc/review/pb";
+import "google/api/annotations.proto";
+
+message RateMobileRequest {
+  string mobile_id = 1;
+  double score = 2;
+}
+
+message RateMobileResponse {
+  string mobile_id = 1;
+  uint32 rated_count = 2;
+  double average_score = 3;
+}
+
+service ReviewService {
+  rpc ReviewMobile(stream RateMobileRequest)
+      returns (stream RateMobileResponse) {
+    option (google.api.http) = {
+      post : "/v1/mobile/review"
+      body : "*"
+    };
+  };
+}
