@@ -42,6 +42,7 @@ func main() {
 	port := flag.Int("port", 0, "the server port")
 	serverType := flag.String("type", "grpc", "type of server (grpc/rest)")
 	endPoint := flag.String("endpoint", "", "gRPC endpoint")
+	// service.MobileServer = flag.String("mobileserver", "0.0.0.0:9089", "the mobile server")
 	flag.Parse()
 
 	reviewStore := service.NewInMemoryReviewStore()

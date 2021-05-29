@@ -22,13 +22,13 @@ clean:
 	rm -r pb/*.go swagger/*
 
 server:
-	go run cmd/server/main.go --port 8080
+	go run cmd/server/main.go --port 8081
 
 rest:
-	go run cmd/server/main.go --port 8082 --type rest --endpoint 0.0.0.0:8080
+	go run cmd/server/main.go --port 8082 --type rest --endpoint 0.0.0.0:8081
 
 client:
-	go run cmd/client/main.go --address localhost:9010
+	go run cmd/client/main.go --address 0.0.0.0:8081
 
 
 build-image:
@@ -36,3 +36,6 @@ build-image:
 
 run:
 	docker run -d --name review -p 9010:8010 mobilestore-review:v1.0.0
+
+
+	# go run cmd/server/main.go --port 8081 --mobileserver 0.0.0.0:8080
